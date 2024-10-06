@@ -1,0 +1,37 @@
+variable;tall;tekst
+year;1;1. aret
+year;2;2. aret
+year;3;3. aret
+year;4;4. aret
+program;1;Bygg- og anleggsteknikk
+program;2;Elektro og datateknologi
+program;3;Frisør, blomster, interior og eksponeringsdesign
+program;4;Helse- og oppvekstfag
+program;5;Handverk, design og produktutvikling
+program;6;Informasjonsteknologi og medieproduksjon
+program;7;Naturbruk
+program;8;Restaurant- og matfag
+program;9;Salg, service og reiseliv
+program;10;Teknologi- og industrifag
+program;11;Service og samferdsel (Utgaende utdanningsprogram)
+program;12;Design og håndverk (Utgaende utdanningsprogram)
+class;1;Faerre enn 7 elever
+class;2;Mellom 7 og 15 elever
+class;3;Over 15 elever
+company;1;Faerre enn 20 ansatte
+company;2;Mellom 21 og 100 ansatte
+company;3;Over 100 ansatte
+department;1;Under 10 ansatte
+department;2;Mellom 10 og 20 ansatte
+department;3;Over 20 ansatte
+visitteacher;1;Ja
+visitteacher;2;Nei
+visitfrequency;1;Flere ganger per mnd
+visitfrequency;2;Minst 1 gang per mnd
+visitfrequency;3;2-3 ganger hvert semester
+visitfrequency;4;Maks 1 gang hvert semester
+visitfrequency;5;Aldri
+gender;1;Gutt
+gender;2;Jente
+gender;4;Annet
+gender;3;Vil ikke oppgi
