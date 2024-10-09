@@ -5,7 +5,7 @@ year;3;3. aret
 year;4;4. aret
 program;1;Bygg- og anleggsteknikk
 program;2;Elektro og datateknologi
-program;3;Frisør, blomster, interior og eksponeringsdesign
+program;3;Frisor, blomster, interior og eksponeringsdesign
 program;4;Helse- og oppvekstfag
 program;5;Handverk, design og produktutvikling
 program;6;Informasjonsteknologi og medieproduksjon
@@ -14,7 +14,7 @@ program;8;Restaurant- og matfag
 program;9;Salg, service og reiseliv
 program;10;Teknologi- og industrifag
 program;11;Service og samferdsel (Utgaende utdanningsprogram)
-program;12;Design og håndverk (Utgaende utdanningsprogram)
+program;12;Design og handverk (Utgaende utdanningsprogram)
 class;1;Faerre enn 7 elever
 class;2;Mellom 7 og 15 elever
 class;3;Over 15 elever

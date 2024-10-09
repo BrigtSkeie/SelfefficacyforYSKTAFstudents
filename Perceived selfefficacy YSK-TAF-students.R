@@ -1,6 +1,4 @@
-# Her er ferdig skript for Masteroppgave om YSK/TAF
-
-# description of variables
+# R-scripts for study on perceived selfefficacy of YSK/TAF-students in Norway
 
 # Loading libraries
 library(psych) # statistiske beskrivelser
@@ -275,17 +273,17 @@ tukey_school_ve <- TukeyHSD(anova_school_ve_class)
 print(tukey_school_ve)
 
 
-# Hypoteser om kjonnsforskjeller
+# Hypothesis about gender differences in GSE
 
-# Nytt datasett ekskluder deltakere som er merket som "annet" i gender-variabelen
+# New data set filtering genders and removing instances with "annet" (other, i.e. not boy or girl)
 YSKTAFstudents_genders <- subset(YSKTAFstudents, gender %in% c("Gutt", "Jente"))
 
-# Hypotese 3a kjønnsforskjeller i GSE mellom kjønnene
-# Levene's test for lik varians mellom gutter og jenter i hele utvalget
+# Hypothesis 3a gender differences in GSE between genders
+# Levene's test
 leveneTest(GSE ~ gender, data = YSKTAFstudents_genders)
 
-# Utfør en tosidig t-test for hele utvalget
-t.test(GSE ~ gender, data = YSKTAFstudents_genders, var.equal = TRUE)  # eller var.equal = FALSE basert på Levene's test
+# t-test
+t.test(GSE ~ gender, data = YSKTAFstudents_genders, var.equal = TRUE)
 
 # Boxplot for all boys and girls
 ggplot(YSKTAFstudents_genders, aes(x = gender, y = GSE)) +
@@ -296,30 +294,39 @@ ggplot(YSKTAFstudents_genders, aes(x = gender, y = GSE)) +
 
 
 
-# Hypotese 3b kjønnsforskjeller i GSE innenfor mannsdominerte fag
-# Kombiner Bygg- og anleggsteknikk med Teknologi- og industrifag
+# Hypothesis 3a gender differences in GSE between genders in male-dominated programs
+# Filter instances from male-dominated programs
 YSKTAFstudents_genders$combined_program <- ifelse(YSKTAFstudents_genders$program %in% c("Bygg- og anleggsteknikk", "Elektro og datateknologi", "Teknologi- og industrifag"),
                                 "Mannsdominert_fag", YSKTAFstudents_genders$program)
 
-# Levene's test for mannsdominerte fag (H3b)
+# Levene's test
 leveneTest(GSE ~ gender, data = subset(YSKTAFstudents_genders, combined_program == "Mannsdominert_fag"))
 
-# Boksdiagram for mannsdominerte fag
+# T-test
+t.test(GSE ~ gender, data = subset(YSKTAFstudents_genders, combined_program == "Mannsdominert_fag"), 
+       var.equal = TRUE, alternative = "less")
+
+# Boxplot for male-dominated programs
 ggplot(subset(YSKTAFstudents_genders, combined_program == "Mannsdominert_fag"), aes(x = gender, y = GSE)) +
   geom_boxplot(fill = c("lightblue", "pink")) +
   labs(title = "Boksdiagram generell opplevd mestringstro for Gutter vs. Jenter (Mannsdominerte fag)",
        x = "Kjonn", y = "Generell opplevd mestringstro") +
   theme_minimal()
 
-# Hypotese 3c kjønnsforskjeller i GSE innenfor kvinnedominerte og kjønnsnøytrale fag
-# Kombiner Helse- og oppvekstfag, Naturbruk og Salg, service og reiseliv
+# Hypothesis 3c gender differences in GSE between genders in genderneutral and female-dominated programs
+# Filter instances from genderneutral and female-dominated programs
 YSKTAFstudents_genders$combined_program <- ifelse(YSKTAFstudents_genders$program %in% c("Helse- og oppvekstfag", "Naturbruk", "Salg, service og reiseliv"),
                                          "Kjonnsnoytrale_fag", YSKTAFstudents_genders$combined_program)
 
-# Levene's test for kjønnsnøytrale/kvinnedominerte fag (H3c)
+# Levene's test
 leveneTest(GSE ~ gender, data = subset(YSKTAFstudents_genders, combined_program == "Kjonnsnoytrale_fag"))
 
-# Boksdiagram for kjønnsnøytrale/kvinnedominerte fag
+# T-test
+t.test(GSE ~ gender, data = subset(YSKTAFstudents_genders, combined_program == "Kjonnsnoytrale_fag"), 
+       var.equal = TRUE)
+
+
+# Boxplot for genderneutral and female-dominated programs
 ggplot(subset(YSKTAFstudents_genders, combined_program == "Kjonnsnoytrale_fag"), aes(x = gender, y = GSE)) +
   geom_boxplot(fill = c("lightblue", "pink")) +
   labs(title = "Boksdiagram generell opplevd mestringstro for Gutter vs. Jenter (Kjonnsnoytrale/kvinnedominerte fag)",
